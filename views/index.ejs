@@ -1,5 +1,10 @@
 <%- include("partials/header.ejs") %>
-<h1>Welcome to the blog!</h1>
+<% if(locals.create){ %>
+    <h1>Thanks for submitting your post!</h1>
+    <!-- Create a header nav bar to navigate back home -->
+<% }else{ %>
+
+    <h1>Welcome to the blog!</h1>
 <h2>New Post:</h2>
 <form action="/create" method="POST">
     <label for="title">Post Title</label><br>
@@ -9,10 +14,24 @@
     <textarea name="body"></textarea><br><br>
 
     <input type="submit" value="Save Post">
+
+    <div id="posts"> 
+        <% posts.forEach(post => { %>
+            <div class="post">
+                <h2><%= post.title %></h2>
+                <p><%= post.content %></p>
+            </div>
+        <% }) %>
+    </div> 
+
+
 </form>
+<%} %>
 
 
 
-    
+
+
+<!-- Add the post list here. you will need to loop through the array  -->
 
 <%- include("partials/footer.ejs") %>
