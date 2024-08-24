@@ -25,7 +25,7 @@ app.post("/create", (req, res)=>{
     posts.push(newPost);
     res.render("index.ejs",{create: isSubmited, posts: posts} )
     console.log(posts);
-    //res.redirect("/");
+    
 });
 
 app.listen(port, ()=>{
